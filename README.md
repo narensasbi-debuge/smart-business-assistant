@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688) ![LangChain](https://img.shields.io/badge/LangChain-0.3-1C3C3C) ![Tests](https://img.shields.io/badge/tests-7%20passing-brightgreen) ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-**Author:** Naren · [GitHub](https://github.com/narensasbi-debuge) · 📦 Live demo: *coming soon*
+**Author:** Naren · [GitHub](https://github.com/narensasbi-debuge) · 🌐 **[Live demo](https://smart-business-assistant.onrender.com)** *(free tier — first load after idle takes ~1 min to wake)*
 
 A **production-grade AI assistant** that answers questions from company documents
 (RAG) and takes real actions — creating CRM contacts and sending emails — through
