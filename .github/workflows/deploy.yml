@@ -22,10 +22,12 @@ jobs:
 
   deploy:
     # Deploys the FastAPI app to AWS Lambda (handler: app.main.handler).
-    # Requires repo secrets: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY.
+    # Disabled by default: set repository variable DEPLOY_TO_AWS=true
+    # (Settings -> Secrets and variables -> Actions -> Variables) and add
+    # secrets AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY to enable.
     # Create the Lambda function + API Gateway HTTP API once (see README).
     needs: test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.DEPLOY_TO_AWS == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
