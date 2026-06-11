@@ -60,13 +60,25 @@ def test_upload_rejects_unsupported_type():
     assert "Unsupported file type" in res.json()["detail"]
 
 
-def test_tools_degrade_gracefully():
+def test_tools_degrade_gracefully(monkeypatch):
+    """Tools must run in simulation mode when integrations are unconfigured.
+    Credentials are cleared explicitly so the test never touches real APIs,
+    even on a machine with a populated .env."""
+    from app import config
     from app.tools import create_hubspot_contact, send_email
 
-    out = create_hubspot_contact.invoke(
-        {"email": "john@example.com", "firstname": "John"}
-    )
-    assert "Simulated" in out or "created" in out
+    monkeypatch.setenv("HUBSPOT_ACCESS_TOKEN", "")
+    monkeypatch.setenv("SMTP_HOST", "")
+    config.get_settings.cache_clear()
+    try:
+        out = create_hubspot_contact.invoke(
+            {"email": "john@example.com", "firstname": "John"}
+        )
+        assert "Simulated" in out
 
-    out = send_email.invoke({"to": "john@example.com", "subject": "Hi", "body": "Test"})
-    assert "simulated" in out.lower() or "sent" in out.lower()
+        out = send_email.invoke(
+            {"to": "john@example.com", "subject": "Hi", "body": "Test"}
+        )
+        assert "simulated" in out.lower()
+    finally:
+        config.get_settings.cache_clear()
