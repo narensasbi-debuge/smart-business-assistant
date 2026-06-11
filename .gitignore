@@ -1,0 +1,21 @@
+# Environments / secrets
+.env
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# Local vector index (rebuild with scripts/ingest_docs.py)
+vector_index/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

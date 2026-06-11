@@ -1,0 +1,38 @@
+# Web framework
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7
+pydantic-settings>=2.3
+
+# LangChain (0.3 line - stable APIs)
+langchain>=0.3,<0.4
+langchain-community>=0.3,<0.4
+langchain-openai>=0.2,<0.4
+langchain-text-splitters>=0.3,<0.4
+
+# Vector store (local, free)
+faiss-cpu>=1.8
+
+# Document loading
+pypdf>=4.2
+tiktoken>=0.7
+
+# Integrations
+twilio>=9.0
+hubspot-api-client>=9.0
+
+# AWS Lambda adapter
+mangum>=0.17
+
+# Utilities
+python-dotenv>=1.0
+email-validator>=2.0
+
+# Optional: Pinecone backend (uncomment if VECTOR_BACKEND=pinecone)
+# langchain-pinecone>=0.2
+# pinecone>=5.0
+
+# Dev / test
+pytest>=8.0
+httpx>=0.27
